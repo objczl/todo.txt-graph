@@ -20,7 +20,7 @@ shift
   if hash python2 2>/dev/null; then
         python2 "$TODO_ACTIONS_DIR"/graph/graph.py "$TODO_FILE" "$DONE_FILE" $flag
   else
-        # use default python 
-        python "$TODO_ACTIONS_DIR"/graph/graph.py "$TODO_FILE" "$DONE_FILE" $flag
+        # use default python
+        $XDG_DATA_HOME/pyenv/shims/python "$TODO_ACTIONS_DIR"/graph/graph.py "$TODO_FILE" "$DONE_FILE" $flag
   fi
 }
