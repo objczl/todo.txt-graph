@@ -2,8 +2,10 @@
 
 # v0.1.0
 
+shims="$(pyenv root)/shims"
+export PATH="$PATH:$shims"
+
 action=$1
-flag=$2
 shift
 
 [ "$action" = "usage" ] && {
@@ -15,12 +17,7 @@ shift
   echo ""
   exit
 }
+
 [ "$action" = "graph" ] && {
-  # check if python2 is defined
-  if hash python2 2>/dev/null; then
-        python2 "$TODO_ACTIONS_DIR"/graph/graph.py "$TODO_FILE" "$DONE_FILE" $flag
-  else
-        # use default python
-        $XDG_DATA_HOME/pyenv/shims/python "$TODO_ACTIONS_DIR"/graph/graph.py "$TODO_FILE" "$DONE_FILE" $flag
-  fi
+	python "$TODO_ACTIONS_DIR"/graph/graph.py "$TODO_FILE" "$DONE_FILE" $@
 }
